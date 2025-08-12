@@ -1,199 +1,230 @@
-import React, { useCallback } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
+import React, { useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Stars } from '@react-three/drei';
+import { motion } from 'framer-motion';
+import Slider from 'react-slick';
+import { FaGraduationCap, FaLaptopCode, FaUsers, FaChartLine, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-const TrainingPrograms = () => {
-  // Embla Carousel setup with autoplay and fade effect
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true,
-    speed: 15,
-    dragFree: true
-  }, [
-    Autoplay({ delay: 5000, stopOnInteraction: false })
-  ]);
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-  // Course data
-  const shortTerm3Month = [
-    "Certificate in Office Automation",
-    "Basic Hardware Maintenance",
-    "Programming Courses (C, C++, SQL, Visual Basic, ASP.Net, Core Java, PHP)",
-    "Certificate in Tally 9.0 with GST",
-    "Certificate in Graphic Design",
-    "Certificate in Web Design",
-    "Certificate in Desktop Publishing"
-  ];
-
-  const shortTerm6Month = [
-    "Basic in Office Automation",
-    "Certificate in E-Filing",
-    "Basic Hardware Maintenance",
-    "Programming Courses (C, C++, SQL, Visual Basic, ASP.Net, Core Java, PHP)",
-    "Certificate in Tally 9.0 with GST",
-    "Certificate in Graphic Design",
-    "Certificate in Web Design",
-    "Certificate in Desktop Publishing",
-    "Certificate in Hardware & Networking"
-  ];
-
-  const diplomaCourses = [
-    "Diploma in Computer Application",
-    "Diploma in Information Technology",
-    "Diploma in Web Designing",
-    "Diploma in Software Application",
-    "Diploma in Hardware & Networking",
-    "Diploma in Multimedia & Animation",
-    "Diploma in Network Engineering",
-    "Diploma in Business Process Outsourcing",
-    "Diploma in Financial Accounting",
-    "Diploma in Taxation & Accountancy",
-    "Advanced Diploma in Software Engineering",
-    "Advanced Diploma in Mobile Maintenance & Repairing"
-  ];
-
-  // Carousel images (using Unsplash as CDN)
-  const carouselImages = [
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-  ];
+// 3D Background Component
+const ThreeDBackground = () => {
+  const Box = () => {
+    const meshRef = useRef();
+    
+    useFrame(() => {
+      meshRef.current.rotation.x += 0.005;
+      meshRef.current.rotation.y += 0.01;
+    });
+    
+    return (
+      <mesh ref={meshRef}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#4F46E5" transparent opacity={0.6} />
+      </mesh>
+    );
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50">
-      {/* Hero Section with Carousel */}
-      <div className="relative h-96 md:h-screen/2 overflow-hidden">
-        <div className="absolute inset-0 bg-black/30 z-10 flex items-center justify-center">
-          <div className="text-center px-4">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Our Training Programs</h1>
-            <p className="text-xl text-white max-w-2xl mx-auto">
-              Industry-relevant courses designed for your success and job placement
-            </p>
-          </div>
-        </div>
-        
-        {/* Embla Carousel */}
-        <div className="embla h-full" ref={emblaRef}>
-          <div className="embla__container h-full">
-            {carouselImages.map((img, index) => (
-              <div className="embla__slide h-full" key={index}>
-                <img 
-                  src={img} 
-                  alt={`Training ${index + 1}`} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        {/* Introduction */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            We offer various courses in IT, software development, hardware maintenance, accounting, multimedia, and more
-          </h2>
-          <div className="w-24 h-1 bg-indigo-600 mx-auto"></div>
-        </div>
-
-        {/* Course Sections */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {/* 3 Month Courses */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:-translate-y-2 hover:shadow-xl">
-            <div className="bg-indigo-600 p-6">
-              <h3 className="text-2xl font-bold text-white">3-Month Certificate Courses</h3>
-            </div>
-            <div className="p-6">
-              <ul className="space-y-3">
-                {shortTerm3Month.map((course, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg className="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-gray-700">{course}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* 6 Month Courses */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:-translate-y-2 hover:shadow-xl">
-            <div className="bg-indigo-700 p-6">
-              <h3 className="text-2xl font-bold text-white">6-Month Certificate Courses</h3>
-            </div>
-            <div className="p-6">
-              <ul className="space-y-3">
-                {shortTerm6Month.map((course, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg className="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-gray-700">{course}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Diploma Courses */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:-translate-y-2 hover:shadow-xl">
-            <div className="bg-indigo-800 p-6">
-              <h3 className="text-2xl font-bold text-white">1-Year Diploma Courses</h3>
-            </div>
-            <div className="p-6">
-              <ul className="space-y-3">
-                {diplomaCourses.map((course, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg className="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-gray-700">{course}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-2xl p-8 md:p-12 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Start Your Journey?</h3>
-          <p className="text-indigo-100 mb-6 max-w-2xl mx-auto">
-            Join our professional training programs and gain the skills needed for today's job market
-          </p>
-          <button className="bg-white text-indigo-700 font-bold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
-            Enroll Now
-          </button>
-        </div>
-      </div>
-
-      {/* Custom CSS for Embla Carousel */}
-      <style jsx>{`
-        .embla {
-          overflow: hidden;
-        }
-        .embla__container {
-          display: flex;
-        }
-        .embla__slide {
-          position: relative;
-          min-width: 100%;
-        }
-        .embla__slide img {
-          filter: brightness(0.8);
-          transition: filter 0.5s ease;
-        }
-        .embla__slide.is-selected img {
-          filter: brightness(1);
-        }
-      `}</style>
+    <div className="fixed w-full h-full z-0 bg-gradient-to-b from-transparent to-indigo-900/30 backdrop-blur-sm animate-pulse transition-all duration-1000 ease-in-out transform hover:scale-105">
+      <Canvas camera={{ position: [0, 0, 5] }}>
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} />
+        <Box />
+        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+        <OrbitControls enableZoom={false} />
+      </Canvas>
     </div>
   );
 };
 
-export default TrainingPrograms;
+// Course Carousel Component
+const CourseCarousel = () => {
+  const courses = [
+    {
+      id: 1,
+      title: 'React Fundamentals',
+      description: 'Master React hooks, components, and state management',
+      image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      id: 2,
+      title: 'Advanced React',
+      description: 'Learn context API, reducers, and performance optimization',
+      image: 'https://images.unsplash.com/photo-1579403124614-197f69d8187b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      id: 3,
+      title: 'React with Tailwind',
+      description: 'Create beautiful UIs with React and Tailwind CSS',
+      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      id: 4,
+      title: 'React Three.js',
+      description: 'Build 3D experiences with React and Three.js',
+      image: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    },
+  ];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div className="px-4 py-8 max-w-7xl mx-auto bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-red-500/30 backdrop-blur-sm rounded-xl shadow-2xl">
+      <h2 className="text-3xl font-bold text-center mb-8 text-black">Featured Courses</h2>
+      <Slider {...settings}>
+        {courses.map((course) => (
+          <motion.div
+            key={course.id}
+            whileHover={{ scale: 1.05 }}
+            className="px-2"
+          >
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+              <img
+                src={course.image}
+                alt={course.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
+                <p className="text-gray-600">{course.description}</p>
+                <button className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition">
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </Slider>
+    </div>
+  );
+};
+
+// Features Component with Animated Icons
+const Features = () => {
+  const features = [
+    {
+      icon: <FaGraduationCap className="w-12 h-12" />,
+      title: 'Expert Instructors',
+      description: 'Learn from React professionals with industry experience',
+    },
+    {
+      icon: <FaLaptopCode className="w-12 h-12" />,
+      title: 'Hands-on Projects',
+      description: 'Build real-world applications during the course',
+    },
+    {
+      icon: <FaUsers className="w-12 h-12" />,
+      title: 'Community Support',
+      description: 'Join our active developer community',
+    },
+    {
+      icon: <FaChartLine className="w-12 h-12" />,
+      title: 'Career Growth',
+      description: 'Get job-ready with in-demand React skills',
+    },
+  ];
+
+  return (
+    <div className="py-16 bg-white  relative animate-pulse transition-all duration-1000 ease-in-out transform hover:scale-105">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Why Learn With Us?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white p-8 rounded-lg shadow-md text-center"
+            >
+              <motion.div
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="text-indigo-600 mx-auto mb-4"
+              >
+                {feature.icon}
+              </motion.div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Main App Component
+function Training() {
+  return (
+    <div className="min-h-screen flex flex-col w-full">
+      <ThreeDBackground />
+      
+
+      {/* Hero Section */}
+      <main className="flex-grow relative z-10 perspective-1000 transform-style-preserve-3d animate-float backdrop-blur-lg bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-indigo-500/20 shadow-2xl">
+        <section className="relative pt-32 pb-20 px-4">
+          <div className="max-w-7xl mx-auto text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-6xl font-bold text-black mb-6"
+            >
+              Master React Development
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-xl md:text-2xl text-black mb-8 max-w-3xl mx-auto"
+            >
+              Transform your career with our comprehensive React training program
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="flex flex-col sm:flex-row justify-center gap-4"
+            >
+              <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition">
+                Start Learning
+              </button>
+              <button className="bg-gray-300 hover:bg-gray-100 text-indigo-600 font-bold py-3 px-8 rounded-lg text-lg transition">
+                View Courses
+              </button>
+            </motion.div>
+          </div>
+        </section>
+
+        <Features />
+        <CourseCarousel />
+      </main>
+
+      
+    </div>
+  );
+}
+
+export default Training;

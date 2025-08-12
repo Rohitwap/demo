@@ -22,6 +22,8 @@ import {
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
+
+  
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
@@ -48,28 +50,19 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
-
+ 
   const courses = [
     { name: 'Full stack Data Science with AI & ML', href: "/fullai", icon: <FiBookOpen className="mr-2" /> },
     { name: 'Full stack Web Development', href: "/fullweb", icon: <FiBookOpen className="mr-2" /> },
     { name: 'Advance Web Design with UI & UX', href: "/advancedui", icon: <FiBookOpen className="mr-2" /> },
-    { name: 'Advance Digital Marketing', href: "/advencedigital", icon: <FiBookOpen className="mr-2" /> },
-    { name: 'Mobile App Development', href: "courses/mobile-app", icon: <FiBookOpen className="mr-2" /> },
+    { name: 'Advance Digital Marketing', href: "/advancedigital", icon: <FiBookOpen className="mr-2" /> },
+    { name: 'Mobile App Development', href: "/mobileapp", icon: <FiBookOpen className="mr-2" /> },
   ];
 
   const moreItems = [
     { name: 'Resources', href: "resources", icon: <FiFileText className="mr-2" /> },
     { name: 'About Us', href: "about", icon: <FiUsers className="mr-2" /> },
-    { name: 'Career Impact', href: "career-impact", icon: <FiAward className="mr-2" /> },
+    { name: 'Career Impact', href: "career", icon: <FiAward className="mr-2" /> },
     { name: 'Gallery', href: "gallery", icon: <FiImage className="mr-2" /> },
     { name: 'Contact Us', href: "contact", icon: <FiMail className="mr-2" /> },
   ];
@@ -83,7 +76,7 @@ const Navbar = () => {
       dropdown: true,
       items: courses
     },
-    { name: 'Upcoming Seminars', href: "seminars", icon: <FiCalendar className="mr-2 text-lg" /> },
+    // { name: 'Upcoming Seminars', href: "seminars", icon: <FiCalendar className="mr-2 text-lg" /> },
     { name: 'Placements', href: "placement", icon: <FiBriefcase className="mr-2 text-lg" /> },
     { name: 'Hire From Us', href: "hire", icon: <FiUsers className="mr-2 text-lg" /> },
     { name: 'Refer & Earn', href: "refer", icon: <FiGift className="mr-2 text-lg" /> },
@@ -120,7 +113,7 @@ const Navbar = () => {
               {/* Desktop Navigation */}
               <div className="hidden md:ml-10 md:flex md:space-x-1">
                 {navItems.map((item) => (
-                  <div key={item.name} className="relative">
+                  <div key={item.name} className="relative delay-200">
                     {item.dropdown ? (
                       <div
                         onMouseEnter={() => item.name === 'Courses' ? setCoursesDropdownOpen(true) : setMoreDropdownOpen(true)}
@@ -137,7 +130,7 @@ const Navbar = () => {
                           ) : (
                             <FiChevronDown className="ml-1" />
                           )}
-                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all duration-300"></span>
+                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all duration-300 "></span>
                         </button>
                         {(item.name === 'Courses' ? coursesDropdownOpen : moreDropdownOpen) && (
                           <div className="absolute left-0 mt-2 w-56 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50">
@@ -173,18 +166,7 @@ const Navbar = () => {
 
             {/* Right side controls */}
             <div className="flex items-center space-x-4">
-              {/* Dark mode toggle */}
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-2 rounded-full text-black hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300 transform hover:scale-110"
-                aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
-              >
-                {darkMode ? (
-                  <FiSun className="h-5 w-5" />
-                ) : (
-                  <FiMoon className="h-5 w-5" />
-                )}
-              </button>
+             
 
               {/* Mobile menu button */}
               <div className="md:hidden ml-2">

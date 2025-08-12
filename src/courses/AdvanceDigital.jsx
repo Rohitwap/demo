@@ -97,7 +97,7 @@ const AdvanceDigital = () => {
   return (
     <div className="min-h-screen bg-light">
       {/* Header/Navigation */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className=" shadow-sm fixed top-0 z-50 mt-22 w-full">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -466,51 +466,7 @@ const AdvanceDigital = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-dark text-white py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">DigitalPro</h3>
-              <p className="text-gray-400">
-                Empowering the next generation of digital marketing professionals with cutting-edge education.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2">
-                {['Home', 'Courses', 'About Us', 'Blog', 'Contact'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">{item}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Resources</h4>
-              <ul className="space-y-2">
-                {['Help Center', 'Career Services', 'Webinars', 'Community', 'Scholarships'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">{item}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Contact</h4>
-              <address className="text-gray-400 not-italic">
-                123 Marketing Ave<br />
-                San Francisco, CA 94107<br />
-                <a href="mailto:info@digitalpro.com" className="hover:text-white transition-colors duration-300">info@digitalpro.com</a><br />
-                (555) 123-4567
-              </address>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>© {new Date().getFullYear()} DigitalPro. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+    
     </div>
   );
 };

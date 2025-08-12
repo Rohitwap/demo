@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaPalette, FaLaptopCode, FaUserTie, FaChartLine, FaCertificate, FaRegSmile } from 'react-icons/fa';
-import { SiFigma,  SiTailwindcss, SiReact } from 'react-icons/si';
+import { SiFigma, SiTailwindcss, SiReact } from 'react-icons/si';
 import { FiAward, FiClock, FiUsers, FiBook } from 'react-icons/fi';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -105,7 +105,7 @@ const AdvancedUi = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-indigo-50">
       {/* Navigation */}
-      <nav className=" shadow-sm py-4 px-6 sticky top-30 z-50 ">
+      <nav className="shadow-sm py-4 px-6 fixed top-[88px] z-50 w-full">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <SiFigma className="text-indigo-600 text-2xl" />
@@ -204,7 +204,7 @@ const AdvancedUi = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Transform Your Design Career</h2>
             <div className="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-16">
               Our comprehensive program takes you from intermediate to advanced level with real-world projects and expert mentorship.
             </p>
           </div>
@@ -326,7 +326,7 @@ const AdvancedUi = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Course Curriculum</h2>
             <div className="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-16">
               A comprehensive journey through modern UI/UX design principles and practices
             </p>
           </div>
@@ -359,7 +359,7 @@ const AdvancedUi = () => {
       </section>
 
       {/* Instructor Section */}
-      <section id="instructor" className="py-16 px-6 bg-white">
+      <section id="instructor" className="py-16 px-6 bg-white mt-25">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/3">
@@ -375,7 +375,7 @@ const AdvancedUi = () => {
                 </div>
               </div>
             </div>
-            <div className="lg:w-2/3">
+            <div className="lg:w-2/3 ">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Learn From Industry Experts</h2>
               <div className="w-24 h-1 bg-indigo-600 mb-6"></div>
               <p className="text-xl text-gray-600 mb-6">
@@ -486,7 +486,7 @@ const AdvancedUi = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
             <div className="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-16">
               Choose the plan that works best for your learning journey
             </p>
           </div>
@@ -693,9 +693,6 @@ const AdvancedUi = () => {
           </div>
         </div>
       </section>
-
-      
-      
     </div>
   );
 };
