@@ -11,6 +11,7 @@ import img9 from "../assets/9.jpeg";
 
 
 
+
 // Images for the Samaura Academy Campus Selection Page
 const images = [
   { id: 1, src: img1, alt: 'Student receiving a congratulatory bouquet from a faculty member.' },

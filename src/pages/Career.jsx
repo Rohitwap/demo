@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Briefcase, Trophy, Globe, GraduationCap } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
+
 
 // Main App component
 export default function App() {
+  const navigate = useNavigate();
+  const navigateToContact = () => {
+    navigate('/contact');
+  };
+
+
+  
   const testimonials = [
     {
       text: "Joining this program was a game-changer. I landed my dream job at a top company and feel confident in my skills.",
@@ -175,7 +184,9 @@ export default function App() {
           <p className="text-lg sm:text-xl md:text-2xl font-light mb-8 opacity-90 animate-fade-in-up delay-200">
             Join the ranks of thousands who have transformed their careers with our cutting-edge programs.
           </p>
-          <button className="bg-white text-indigo-600 px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300 ease-in-out animate-fade-in-up delay-400">
+          <button onClick={navigateToContact}
+
+          className="bg-white text-indigo-600 px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300 ease-in-out animate-fade-in-up delay-400">
             Explore Programs
           </button>
         </div>

@@ -82,7 +82,7 @@ const HirePage = () => {
                     <div className="max-w-3xl">
                         <h1 className="text-4xl md:text-5xl font-bold mb-6">Hire World-Class IT Talent</h1>
                         <p className="text-xl md:text-2xl mb-8">
-                            Connect with highly skilled graduates from Samurai Academy's rigorous IT training programs
+                            Connect with highly skilled graduates from Samaura's rigorous IT training programs
                         </p>
                         <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                             <a
@@ -107,9 +107,9 @@ const HirePage = () => {
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row items-center">
                         <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                            <h2 className="text-3xl font-bold text-gray-800 mb-6">About Samurai Academy</h2>
+                            <h2 className="text-3xl font-bold text-gray-800 mb-6">About Samaura Academy</h2>
                             <p className="text-lg text-gray-600 mb-6">
-                                Founded in 2010, Samurai Academy has trained over 5,000 IT professionals who now work at top tech companies worldwide. Our intensive programs combine traditional Japanese discipline with cutting-edge technology education.
+                                Founded in 2010, Samaura Academy has trained over 5,000 IT professionals who now work at top tech companies worldwide. Our intensive programs combine traditional Japanese discipline with cutting-edge technology education.
                             </p>
                             <p className="text-lg text-gray-600">
                                 We specialize in producing full-stack developers, cloud engineers, and cybersecurity experts ready to contribute from day one.

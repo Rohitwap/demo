@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -14,6 +15,8 @@ import AllCourse from "./AllCourse";
 import RoundCard from "./RoundCard";
 
 function Home() {
+  const navigate = useNavigate(); // Initialize the navigate function
+
   // Define your slides data
   const slides = [
     {
@@ -76,6 +79,11 @@ function Home() {
   const carouselNext = useCallback(() => {
     carouselApi?.scrollNext();
   }, [carouselApi]);
+
+  // Handle navigation to contact page
+  const navigateToContact = () => {
+    navigate('/contact');
+  };
 
   // Framer Motion effects for carousel
   const x = useMotionValue(0);
@@ -146,6 +154,7 @@ function Home() {
                     className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={navigateToContact}
                   >
                     Get Started
                   </motion.button>
@@ -205,6 +214,7 @@ function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
+              onClick={navigateToContact}
             >
               <div className="text-center">
                 <h3 className="text-2xl md:text-3xl font-extrabold mb-4 text-white">
@@ -213,6 +223,9 @@ function Home() {
                 <p className="text-sm md:text-base text-gray-300 leading-relaxed">
                   Samaura Academy, established in 2024, is an ISO-certified training institute offering diverse courses to equip students with industry-relevant skills and ensure successful job placements.
                 </p>
+                <button className="mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg">
+                  Contact Us
+                </button>
               </div>
             </motion.div>
 
@@ -224,6 +237,7 @@ function Home() {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
+              onClick={navigateToContact}
             >
               <div className="text-center">
                 <h3 className="text-2xl md:text-3xl font-extrabold mb-4 text-white">
@@ -232,6 +246,9 @@ function Home() {
                 <p className="text-sm md:text-base text-gray-300 leading-relaxed">
                   Our programs include short-term certificate courses in IT, software development, hardware maintenance, and accounting, all designed to meet the evolving needs of students and the job market.
                 </p>
+                <button className="mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg">
+                  Contact Us
+                </button>
               </div>
             </motion.div>
           </div>
@@ -250,14 +267,23 @@ function Home() {
               alt="Career success illustration" 
               className="rounded-2xl object-cover w-full h-full" 
             />
+            <div className="mt-4 text-center">
+              <motion.button
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={navigateToContact}
+              >
+                Get in Touch
+              </motion.button>
+            </div>
           </motion.div>
         </div>
       </div>
 
-      
-      <Training/>
-      <AllCourse/>
-      <RoundCard/>
+      <Training navigateToContact={navigateToContact} />
+      <AllCourse navigateToContact={navigateToContact} />
+      <RoundCard navigateToContact={navigateToContact} />
     </div>
     </>
   );

@@ -35,7 +35,7 @@ const Resourses = () => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">S</div>
-            <span className="text-xl font-bold text-gray-800">Samurai Academy</span>
+            <span className="text-xl font-bold text-gray-800">Samaura Academy</span>
           </div>
           
           {/* Desktop Navigation */}
@@ -72,7 +72,7 @@ const Resourses = () => {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Master the Art of Modern Skills</h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Samurai Academy provides world-class training resources to help you excel in your career and personal development.
+            Samaura Academy provides world-class training resources to help you excel in your career and personal development.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <a 
@@ -331,9 +331,9 @@ const Resourses = () => {
             <div className="mb-6 md:mb-0">
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">S</div>
-                <span className="text-xl font-bold">Samurai Academy</span>
+                <span className="text-xl font-bold">Samaura Academy</span>
               </div>
-              <p className="text-gray-400">© {new Date().getFullYear()} Samurai Academy. All rights reserved.</p>
+              <p className="text-gray-400">© {new Date().getFullYear()} Samaura Academy. All rights reserved.</p>
             </div>
             
             <div className="flex space-x-6">

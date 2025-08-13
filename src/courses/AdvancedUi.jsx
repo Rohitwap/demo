@@ -5,8 +5,15 @@ import { FiAward, FiClock, FiUsers, FiBook } from 'react-icons/fi';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useNavigate } from "react-router-dom";
+
 
 const AdvancedUi = () => {
+  const navigate = useNavigate()
+
+  const navigateToContact = () => {
+    navigate('/contact');
+  };
   // Carousel settings
   const carouselSettings = {
     dots: true,
@@ -117,7 +124,8 @@ const AdvancedUi = () => {
             <a href="#instructor" className="text-gray-700 hover:text-indigo-600 transition">Instructor</a>
             <a href="#pricing" className="text-gray-700 hover:text-indigo-600 transition">Pricing</a>
           </div>
-          <button className="bg-indigo-600 text-white px-6 py-2 rounded-full font-medium hover:bg-indigo-700 transition shadow-md">
+          <button onClick={navigateToContact}
+           className="bg-indigo-600 text-white px-6 py-2 rounded-full font-medium hover:bg-indigo-700 transition shadow-md">
             Enroll Now
           </button>
         </div>
@@ -138,10 +146,12 @@ const AdvancedUi = () => {
                 Elevate your design skills with our intensive 12-week program. Learn advanced techniques from industry experts and build portfolio-worthy projects.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg flex items-center justify-center">
+                <button onClick={navigateToContact}
+                 className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg flex items-center justify-center">
                   <FaRegSmile className="mr-2" /> Enroll Now
                 </button>
-                <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-medium hover:border-indigo-300 hover:bg-indigo-50 transition duration-300">
+                <button onClick={navigateToContact}
+                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-medium hover:border-indigo-300 hover:bg-indigo-50 transition duration-300">
                   Watch Sample Lesson
                 </button>
               </div>
@@ -427,7 +437,8 @@ const AdvancedUi = () => {
                   </div>
                 </div>
               </div>
-              <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition flex items-center">
+              <button onClick={navigateToContact}
+              className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition flex items-center">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -532,7 +543,8 @@ const AdvancedUi = () => {
                     <span className="text-gray-400">Certificate review</span>
                   </li>
                 </ul>
-                <button className="w-full bg-gray-100 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-200 transition">
+                <button onClick={navigateToContact}
+                className="w-full bg-gray-100 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-200 transition">
                   Choose Plan
                 </button>
               </div>
@@ -581,7 +593,8 @@ const AdvancedUi = () => {
                     <span>Job search support</span>
                   </li>
                 </ul>
-                <button className="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 transition shadow-md">
+                <button onClick={navigateToContact}
+                 className="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 transition shadow-md">
                   Choose Plan
                 </button>
               </div>
@@ -627,7 +640,8 @@ const AdvancedUi = () => {
                     <span>Dedicated account manager</span>
                   </li>
                 </ul>
-                <button className="w-full bg-gray-100 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-200 transition">
+                <button onClick={navigateToContact}
+                className="w-full bg-gray-100 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-200 transition">
                   Choose Plan
                 </button>
               </div>
@@ -684,10 +698,12 @@ const AdvancedUi = () => {
             Join our next cohort and gain the skills to create stunning, user-centered digital experiences.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-50 transition duration-300 shadow-lg">
+            <button onClick={navigateToContact}
+            className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-50 transition duration-300 shadow-lg">
               Enroll Now
             </button>
-            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition duration-300">
+            <button onClick={navigateToContact}
+            className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition duration-300">
               Talk to an Advisor
             </button>
           </div>

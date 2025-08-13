@@ -1,5 +1,7 @@
 import React from 'react';
 import { Award, Rocket, Briefcase, Star } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
+
 
 const stats = [
   { id: 1, name: 'Students Placed', value: '1500+', icon: Award },
@@ -83,6 +85,10 @@ const testimonials = [
 ];
 
 const Placement = () => {
+  const navigate = useNavigate();
+  const navigateToContact = () => {
+    navigate('/contact');
+  };
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800 antialiased">
     
@@ -98,10 +104,12 @@ const Placement = () => {
             We connect top talent with leading companies around the world. Your career starts here.
           </p>
           <div className="mt-8 flex justify-center space-x-4 animate-fade-in delay-400">
-            <button className="bg-indigo-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition-all duration-300">
+            <button onClick={navigateToContact}
+            className="bg-indigo-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition-all duration-300">
               Explore Opportunities
             </button>
-            <button className="bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gray-300 transform hover:scale-105 transition-all duration-300">
+            <button onClick={navigateToContact}
+             className="bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gray-300 transform hover:scale-105 transition-all duration-300">
               Learn More
             </button>
           </div>
@@ -185,7 +193,8 @@ const Placement = () => {
           <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8">
             Join the ranks of our successful alumni and take the first step towards a rewarding career.
           </p>
-          <button className="bg-white text-indigo-600 font-bold py-3 px-8 rounded-full shadow-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
+          <button onClick={navigateToContact}
+          className="bg-white text-indigo-600 font-bold py-3 px-8 rounded-full shadow-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
             Get Started Now
           </button>
         </div>

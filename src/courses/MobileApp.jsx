@@ -1,7 +1,15 @@
 import { FaMobileAlt, FaCode, FaRocket, FaShieldAlt, FaChartLine, FaRegLightbulb } from 'react-icons/fa';
 import { FiSmartphone, FiDownload, FiUsers, FiCheckCircle } from 'react-icons/fi';
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function MobileApp() {
+  
+  const navigateToContact = () => {
+    navigate('/contact');
+  };
+  const navigate = useNavigate();
 
   return (
     <div className="font-sans bg-gray-50">
@@ -16,10 +24,10 @@ export default function MobileApp() {
               We create stunning, high-performance mobile applications for startups and enterprises.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 shadow-lg">
+              <button onClick={navigateToContact} className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 shadow-lg">
                 Get Started
               </button>
-              <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+              <button onClick={navigateToContact} className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
                 View Portfolio
               </button>
             </div>
@@ -137,7 +145,8 @@ export default function MobileApp() {
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Get in touch with our team to discuss your project and receive a free consultation.
           </p>
-          <button className="bg-blue-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-lg">
+          <button onClick={navigateToContact}
+          className="bg-blue-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-lg">
             Start Your Project Today
           </button>
         </div>

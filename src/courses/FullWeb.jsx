@@ -4,8 +4,15 @@ import { SiJavascript, SiReact, SiMongodb,  SiHtml5, SiCss3 } from 'react-icons/
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useNavigate } from "react-router-dom";
+
 
 const FullWeb = () => {
+   const navigate = useNavigate()
+
+  const navigateToContact = () => {
+    navigate('/contact');
+  };
   // Carousel settings
   const carouselSettings = {
     dots: true,
@@ -108,7 +115,7 @@ const FullWeb = () => {
                   <span>MongoDB</span>
                 </div>
               </div>
-              <button className="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-100 transition duration-300 shadow-lg">
+              <button onClick={navigateToContact} className="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-100 transition duration-300 shadow-lg">
                 Enroll Now
               </button>
             </div>
@@ -233,7 +240,8 @@ const FullWeb = () => {
               <div className="mt-8 bg-blue-50 p-6 rounded-lg border border-blue-100">
                 <h4 className="font-semibold text-blue-800 mb-2">Special Offer</h4>
                 <p className="text-blue-700 mb-3">Enroll before July 30 and get a free 1-year domain & hosting package!</p>
-                <button className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-300">
+                <button onClick={navigateToContact} 
+                 className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-300">
                   Claim Your Spot
                 </button>
               </div>
@@ -324,10 +332,12 @@ const FullWeb = () => {
             Join our next cohort and gain the skills to build modern web applications.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 shadow-lg">
+            <button onClick={navigateToContact}
+            className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 shadow-lg">
               Enroll Now
             </button>
-            <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition duration-300">
+            <button onClick={navigateToContact}
+            className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition duration-300">
               Download Syllabus
             </button>
           </div>

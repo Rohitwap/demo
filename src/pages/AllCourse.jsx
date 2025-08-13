@@ -273,13 +273,7 @@ const ProductsPage = () => {
                   <div>
                     <span className="text-lg font-bold text-gray-900">₹{product.price.toLocaleString()}</span>
                   </div>
-                  <button 
-                    onClick={() => addToBag(product)}
-                    className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
-                  >
-                    <FiShoppingBag className="mr-2" />
-                    Add to bag
-                  </button>
+                  
                 </div>
               </div>
             </div>

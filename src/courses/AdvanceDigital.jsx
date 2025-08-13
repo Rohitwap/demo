@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -7,6 +8,13 @@ import { FaChartLine, FaSearch, FaMobile, FaVideo, FaLaptopCode, FaUserTie, FaCe
 import { FiArrowRight } from 'react-icons/fi';
 
 const AdvanceDigital = () => {
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  // Handle navigation to contact page
+  const navigateToContact = () => {
+    navigate('/contact');
+  };
+
   // Carousel settings
   const carouselSettings = {
     dots: true,
@@ -118,7 +126,10 @@ const AdvanceDigital = () => {
               </a>
             ))}
           </nav>
-          <button className="bg-primary text-black px-6 py-2 rounded-full hover:bg-primary/90 transition-colors duration-300 shadow-md hover:shadow-lg">
+          <button 
+            onClick={navigateToContact}
+            className="bg-primary text-black px-6 py-2 rounded-full hover:bg-primary/90 transition-colors duration-300 shadow-md hover:shadow-lg"
+          >
             Enroll Now
           </button>
         </div>
@@ -143,10 +154,16 @@ const AdvanceDigital = () => {
                 Transform your marketing skills with cutting-edge strategies used by top agencies and brands worldwide.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-white text-black text-primary px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center">
+                <button 
+                  onClick={navigateToContact}
+                  className="bg-white text-black text-primary px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center"
+                >
                   Enroll Now <FiArrowRight className="ml-2" />
                 </button>
-                <button className="bg-transparent border-2 text-black border-white px-8 py-3 rounded-full font-bold hover:bg-white/10 transition-colors duration-300">
+                <button 
+                  onClick={navigateToContact}
+                  className="bg-transparent border-2 text-black border-white px-8 py-3 rounded-full font-bold hover:bg-white/10 transition-colors duration-300"
+                >
                   Watch Preview
                 </button>
               </div>
@@ -278,6 +295,12 @@ const AdvanceDigital = () => {
                     </motion.div>
                   ))}
                 </div>
+                <button 
+                  onClick={navigateToContact}
+                  className="mt-6 w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors duration-300"
+                >
+                  Learn More
+                </button>
               </div>
             </div>
           </div>
@@ -319,7 +342,10 @@ const AdvanceDigital = () => {
                     {module.title}
                   </h3>
                   <p className="text-gray-600 mb-4">{module.description}</p>
-                  <button className="text-primary font-medium flex items-center group-hover:underline">
+                  <button 
+                    onClick={navigateToContact}
+                    className="text-primary font-medium flex items-center group-hover:underline"
+                  >
                     Learn more <FiArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
                 </div>
@@ -371,6 +397,12 @@ const AdvanceDigital = () => {
                           <h4 className="font-bold text-lg">{testimonial.name}</h4>
                           <p className="opacity-80">{testimonial.role}</p>
                         </div>
+                        <button 
+                          onClick={navigateToContact}
+                          className="mt-4 bg-white text-primary px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300"
+                        >
+                          Contact Us
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -421,15 +453,24 @@ const AdvanceDigital = () => {
                     <p className="text-primary font-medium mb-4">{instructor.role}</p>
                     <p className="text-gray-600 mb-6">{instructor.bio}</p>
                     <div className="flex space-x-4">
-                      <a href="#" className="bg-primary/10 text-primary p-2 rounded-full hover:bg-primary/20 transition-colors duration-300">
+                      <button 
+                        onClick={navigateToContact}
+                        className="bg-primary/10 text-primary p-2 rounded-full hover:bg-primary/20 transition-colors duration-300"
+                      >
                         <FaLinkedin />
-                      </a>
-                      <a href="#" className="bg-primary/10 text-primary p-2 rounded-full hover:bg-primary/20 transition-colors duration-300">
+                      </button>
+                      <button 
+                        onClick={navigateToContact}
+                        className="bg-primary/10 text-primary p-2 rounded-full hover:bg-primary/20 transition-colors duration-300"
+                      >
                         <FaUserTie />
-                      </a>
-                      <a href="#" className="bg-primary/10 text-primary p-2 rounded-full hover:bg-primary/20 transition-colors duration-300">
+                      </button>
+                      <button 
+                        onClick={navigateToContact}
+                        className="bg-primary/10 text-primary p-2 rounded-full hover:bg-primary/20 transition-colors duration-300"
+                      >
                         <FaLaptopCode />
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -454,10 +495,16 @@ const AdvanceDigital = () => {
                 Join thousands of professionals who've accelerated their careers with our Advanced Digital Marketing program.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <button className="bg-white text-primary text-black px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-colors duration-300 text-lg flex items-center justify-center">
+                <button 
+                  onClick={navigateToContact}
+                  className="bg-white text-primary text-black px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-colors duration-300 text-lg flex items-center justify-center"
+                >
                   Enroll Now <FiArrowRight className="ml-2" />
                 </button>
-                <button className="bg-transparent border-2 text-black border-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors duration-300 text-lg">
+                <button 
+                  onClick={navigateToContact}
+                  className="bg-transparent border-2 text-black border-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors duration-300 text-lg"
+                >
                   Speak to an Advisor
                 </button>
               </div>
@@ -465,8 +512,6 @@ const AdvanceDigital = () => {
           </div>
         </div>
       </section>
-
-    
     </div>
   );
 };
