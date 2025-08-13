@@ -9,20 +9,20 @@ const HirePage = () => {
 
     const testimonials = [
         {
-            name: "Takashi Yamamoto",
+            name: "Samprita Matty",
             role: "CTO, TechGlobal Inc.",
-            quote: "Samurai Academy graduates consistently demonstrate exceptional technical skills and strong problem-solving abilities. They've become valuable assets to our engineering team.",
+            quote: "Samaura Academy graduates consistently demonstrate exceptional technical skills and strong problem-solving abilities. They've become valuable assets to our engineering team.",
             avatar: "TY"
         },
         {
             name: "Aiko Tanaka",
             role: "HR Director, SoftBridge Solutions",
-            quote: "We've hired over 20 graduates from Samurai Academy in the past two years. Their rigorous training prepares them to hit the ground running in our development projects.",
+            quote: "We've hired over 20 graduates from Samaura Academy in the past two years. Their rigorous training prepares them to hit the ground running in our development projects.",
             avatar: "AT"
         },
         {
             name: "Kenji Sato",
-            role: "Samurai Academy Graduate",
+            role: "Samaura Academy Graduate",
             quote: "The academy's career support helped me land my dream job at a Fortune 500 company within a month of completing the program.",
             avatar: "KS"
         }
@@ -43,7 +43,8 @@ const HirePage = () => {
                 <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                     <div className="flex items-center space-x-2">
                         <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">S</div>
-                        <span className="text-xl font-bold text-gray-800">Samurai Academy</span>
+                        <span className="text-xl font-bold text-gray-800">Samaura Academy</span>
+
                     </div>
 
                     {/* Desktop Navigation */}
@@ -340,7 +341,7 @@ const HirePage = () => {
                                     <FiMail className="text-xl mt-1 mr-4 text-red-400" />
                                     <div>
                                         <h4 className="font-bold">Email</h4>
-                                        <p className="text-gray-300">hire@samuriacademy.com</p>
+                                        <p className="text-gray-300">hire@samaruacademy.com</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start">
