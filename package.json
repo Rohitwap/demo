@@ -20,6 +20,7 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.12",
+    "hash-router": "^0.4.0",
     "localtunnel": "^2.0.2",
     "lucide-react": "^0.539.0",
     "ngrok": "^5.0.0-beta.2",

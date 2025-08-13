@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as HashRouter, Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home";
 import Course from "./pages/Course";
 import About from "./pages/About";
@@ -20,7 +20,7 @@ import Refer from "./pages/Rafer"
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
@@ -46,7 +46,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 

@@ -1,10 +1,8 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
-// Sample card data with enhanced content
-const journeyCards = [
+// Card data
+const JOURNEY_CARDS = [
   {
     image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
     title: 'The Vision (2023)',
@@ -51,36 +49,35 @@ const journeyCards = [
   }
 ];
 
-// Enhanced 3D Card Component with beautiful effects
-function JourneyCard({ image, title, description, icon, color }) {
+// Fixed JourneyCard component
+const JourneyCard = React.memo(({ image, title, description, icon, color }) => {
   return (
     <motion.div 
-      className="group h-[28rem] w-80 mx-4 [perspective:1000px]"
-      whileHover={{ scale: 1.05 }}
+      className="group h-full w-full [perspective:1000px]"
+      whileHover={{ scale: 1.03 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="relative h-full w-full rounded-3xl shadow-2xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(15deg)_rotateX(5deg)] overflow-hidden">
-        {/* Background Image with Gradient Overlay */}
+      <div className="relative h-full w-full rounded-3xl shadow-2xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(10deg)_rotateX(5deg)] overflow-hidden">
         <div className="absolute inset-0">
           <img 
             src={image} 
             alt={title} 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            loading="lazy"
           />
           <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-90`}></div>
         </div>
         
-        {/* Card Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center [backface-visibility:hidden]">
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center [backface-visibility:hidden]">
           <motion.div 
-            className="mb-6 p-4 rounded-full bg-white/20 backdrop-blur-sm"
+            className="mb-4 p-3 rounded-full bg-white/20 backdrop-blur-sm"
             whileHover={{ rotate: 15, scale: 1.1 }}
           >
             {icon}
           </motion.div>
           
           <motion.h3 
-            className="text-2xl font-bold text-white mb-4"
+            className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -89,7 +86,7 @@ function JourneyCard({ image, title, description, icon, color }) {
           </motion.h3>
           
           <motion.p 
-            className="text-white/90 mb-8"
+            className="text-sm md:text-base text-white/90 mb-4 md:mb-6"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -98,12 +95,12 @@ function JourneyCard({ image, title, description, icon, color }) {
           </motion.p>
           
           <motion.button
-            className="px-6 py-2 bg-white/20 rounded-full text-white border border-white/30 hover:bg-white/30 transition-all flex items-center gap-2"
+            className="px-4 py-1.5 md:px-6 md:py-2 bg-white/20 rounded-full text-white border border-white/30 hover:bg-white/30 transition-all flex items-center gap-2 text-sm md:text-base"
             whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.3)' }}
             whileTap={{ scale: 0.95 }}
           >
             <span>Read More</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </motion.button>
@@ -111,36 +108,22 @@ function JourneyCard({ image, title, description, icon, color }) {
       </div>
     </motion.div>
   );
-}
+});
 
-// Main Page Component with enhanced design
+JourneyCard.displayName = 'JourneyCard';
+
 function OurJourneyPage() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true, 
-    align: 'center',
-    skipSnaps: false
-  }, [Autoplay({ delay: 5000, stopOnInteraction: false })]);
-  
-  const [prevEnabled, setPrevEnabled] = useState(false);
-  const [nextEnabled, setNextEnabled] = useState(false);
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    const onSelect = () => {
-      setPrevEnabled(emblaApi.canScrollPrev());
-      setNextEnabled(emblaApi.canScrollNext());
-    };
-    emblaApi.on('select', onSelect);
-    onSelect();
-    return () => emblaApi.off('select', onSelect);
-  }, [emblaApi]);
+  const renderedCards = useMemo(() => (
+    JOURNEY_CARDS.map((card) => (
+      <div key={card.title} className="h-[22rem] sm:h-[26rem] md:h-[28rem] p-2 md:p-4">
+        <JourneyCard {...card} />
+      </div>
+    ))
+  ), []);
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden">
-      {/* Animated Background Elements */}
+      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(10)].map((_, i) => (
           <motion.div
@@ -166,87 +149,27 @@ function OurJourneyPage() {
         ))}
       </div>
 
-      {/* Header with animation */}
       <motion.header 
-        className="relative py-16 text-center"
+        className="relative py-12 md:py-16 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-5xl font-bold text-indigo-900 mb-4">Our Journey</h1>
-        <div className="w-32 h-1.5 bg-gradient-to-r from-amber-400 to-amber-500 mx-auto mb-6 rounded-full"></div>
-        <p className="text-xl text-indigo-700 max-w-3xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-indigo-900 mb-3 md:mb-4">Our Journey</h1>
+        <div className="w-24 md:w-32 h-1.5 bg-gradient-to-r from-amber-400 to-amber-500 mx-auto mb-4 md:mb-6 rounded-full"></div>
+        <p className="text-lg md:text-xl text-indigo-700 max-w-3xl mx-auto px-4">
           From vision to reality - the milestones that define Samaura Academy's path
         </p>
       </motion.header>
 
-      {/* Enhanced Carousel Container */}
-      <div className="relative w-full max-w-7xl mx-auto px-4">
-        {/* Carousel */}
-        <div 
-          className="embla overflow-hidden"
-          ref={emblaRef} 
-          aria-label="Samaura Academy journey timeline"
-        >
-          <div className="embla__container flex gap-8 py-8">
-            {journeyCards.map((card, idx) => (
-              <div 
-                className="embla__slide flex-shrink-0" 
-                key={idx}
-              >
-                <JourneyCard {...card} />
-              </div>
-            ))}
-          </div>
+      {/* Main cards container with responsive grid */}
+      <div className="relative w-full max-w-7xl mx-auto px-4 pb-12 md:pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+          {renderedCards}
         </div>
-
-        {/* Custom Navigation Arrows */}
-        <motion.button
-          className={`absolute left-4 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-xl hover:shadow-2xl z-10 ${
-            !prevEnabled ? 'opacity-50 cursor-default' : 'hover:bg-indigo-50'
-          }`}
-          onClick={scrollPrev}
-          disabled={!prevEnabled}
-          aria-label="Previous slide"
-          whileHover={{ scale: prevEnabled ? 1.1 : 1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <svg className="w-6 h-6 text-indigo-700" fill="none" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </motion.button>
-        
-        <motion.button
-          className={`absolute right-4 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-xl hover:shadow-2xl z-10 ${
-            !nextEnabled ? 'opacity-50 cursor-default' : 'hover:bg-indigo-50'
-          }`}
-          onClick={scrollNext}
-          disabled={!nextEnabled}
-          aria-label="Next slide"
-          whileHover={{ scale: nextEnabled ? 1.1 : 1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <svg className="w-6 h-6 text-indigo-700" fill="none" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </motion.button>
-      </div>
-
-      {/* Dots Indicator */}
-      <div className="flex justify-center mt-8 pb-16">
-        {journeyCards.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => emblaApi?.scrollTo(idx)}
-            className={`w-3 h-3 mx-2 rounded-full transition-all duration-300 ${
-              emblaApi?.selectedScrollSnap() === idx ? 'bg-indigo-600 w-8' : 'bg-indigo-300'
-            }`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
       </div>
     </div>
   );
 }
 
-export default OurJourneyPage;
+export default React.memo(OurJourneyPage);

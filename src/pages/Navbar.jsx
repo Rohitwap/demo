@@ -91,6 +91,7 @@ const Navbar = () => {
 
   return (
     <>
+    {/* <SomeLibraryComponent jsx={true} global={true} /> */}
       <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${scrolled ? 'bg-white bg-opacity-90 backdrop-blur-sm shadow-sm' : 'bg-transparent'}`}>
         {/* Top banner */}
         <div className='w-full bg-gradient-to-r from-purple-500 to-indigo-600 font-sans text-white text-center py-2 text-sm md:text-base'>
