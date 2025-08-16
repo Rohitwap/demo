@@ -6,43 +6,46 @@ const ProductsPage = () => {
   const [products, setProducts] = useState([
     {
       id: 1,
-      name: "Limbro Drive",
-      category: "Sales",
-      variants: ["SAYS US", "PUNNY", "WEB", "FTP", "PRT-WALL", "CAREER PCS"],
-      price: 10000,
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.5
+      name: "Full Stack Developer AI/ML",
+      category: "Software Development",
+      price: 9999,
+      image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      rating: 4.9,
+      variants: ["Python", "TensorFlow", "Machine Learning", "Deep Learning"]
     },
     {
       id: 2,
-      name: "Advanced Diploma in Network Engineering",
-      category: "Education",
-      price: 10000,
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.8
+      name: "Full Stack Web Development",
+      category: "Web Development",
+      price: 9999,
+      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      rating: 4.8,
+      variants: ["HTML/CSS", "JavaScript", "React", "Node.js", "MongoDB"]
     },
     {
       id: 3,
-      name: "Advanced Diploma in Software Engineering",
-      category: "Education",
-      price: 10000,
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80",
-      rating: 4.7
+      name: "Advanced Web Design UI/UX",
+      category: "Design",
+      price: 9999,
+      image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      rating: 4.7,
+      variants: ["Figma", "Adobe XD", "Prototyping", "User Research"]
     },
     {
       id: 4,
-      name: "Diploma in Computer Programming",
-      category: "Education",
-      price: 10000,
-      image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.3
+      name: "Mobile App Development",
+      category: "Mobile Development",
+      price: 9999,
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80",
+      rating: 4.8,
+      variants: ["React Native", "Flutter", "iOS", "Android"]
     },
     {
       id: 5,
       name: "Managing Software Projects",
       category: "Software Engineering",
       variants: ["Tenting", "Design"],
-      price: 8500,
+      price: 2999,
       image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80",
       rating: 4.6
     },
@@ -51,16 +54,15 @@ const ProductsPage = () => {
       name: "Sales Partnership Program",
       category: "Sales",
       variants: ["Partner", "Customer", "Service"],
-      price: 7500,
+      price: 2999,
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
       rating: 4.2
     },
-    // Newly added courses
     {
       id: 7,
       name: "Diploma in Graphics Design",
       category: "Design",
-      price: 9500,
+      price: 2999,
       image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
       rating: 4.4
     },
@@ -68,7 +70,7 @@ const ProductsPage = () => {
       id: 8,
       name: "Diploma in Taxation & Accountancy",
       category: "Finance",
-      price: 8800,
+      price: 7999,
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1511&q=80",
       rating: 4.1
     },
@@ -76,7 +78,7 @@ const ProductsPage = () => {
       id: 9,
       name: "Diploma in Business Process Outsourcing",
       category: "Business",
-      price: 9200,
+      price: 7999,
       image: "https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
       rating: 4.0
     },
@@ -84,93 +86,11 @@ const ProductsPage = () => {
       id: 10,
       name: "Diploma in Hardware & Networking",
       category: "IT",
-      price: 10500,
+      price: 9999,
       image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80",
       rating: 4.6
-    },
-    {
-      id: 11,
-      name: "Diploma in Multimedia & Animation",
-      category: "Design",
-      price: 11000,
-      image: "https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.7
-    },
-    {
-      id: 12,
-      name: "Diploma in Software",
-      category: "IT",
-      price: 10000,
-      image: "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
-      rating: 4.5
-    },
-    {
-      id: 13,
-      name: "Certificate in Graphic Design",
-      category: "Design",
-      price: 6500,
-      image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.3
-    },
-    {
-      id: 14,
-      name: "Diploma in Computer Application",
-      category: "IT",
-      price: 9800,
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.2
-    },
-    {
-      id: 15,
-      name: "Certificate in Web Design",
-      category: "Web Development",
-      price: 7000,
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1528&q=80",
-      rating: 4.4
-    },
-    {
-      id: 16,
-      name: "Diploma in Information Technology",
-      category: "IT",
-      price: 10200,
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.6
-    },
-    {
-      id: 17,
-      name: "Basic Course in SQL",
-      category: "Database",
-      price: 5500,
-      image: "https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.0
-    },
-    {
-      id: 18,
-      name: "Certificate in Desktop Publishing",
-      category: "Design",
-      price: 6000,
-      image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1136&q=80",
-      rating: 4.1
-    },
-    {
-      id: 19,
-      name: "Basic Course in Visual Basic",
-      category: "Programming",
-      price: 5800,
-      image: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1064&q=80",
-      rating: 3.9
-    },
-    {
-      id: 20,
-      name: "Certificate in ASP.NET/Core Java/PHP/AutoCAD",
-      category: "Programming",
-      variants: ["ASP.NET", "Core Java", "PHP", "AutoCAD"],
-      price: 7500,
-      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.2
     }
   ]);
-
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
